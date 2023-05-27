@@ -7,8 +7,7 @@ The Object.assign() method does a shallow copy. This means that it copies the va
 
 Here's an example:
 
-javascript
-
+```javascript
 let original = { a: 1, b: { c: 3 } };  // original object
 let copy = Object.assign({}, original);  // copy using Object.assign()
 
@@ -17,14 +16,13 @@ console.log(copy);  // outputs: { a: 1, b: { c: 3 } }
 // now let's change the value in the 'copy' object
 copy.a = 10;
 copy.b.c = 30;
-
 console.log(original);  // outputs: { a: 1, b: { c: 30 } }
 console.log(copy);  // outputs: { a: 10, b: { c: 30 } }
+```
 
 In this example, when we change the value of copy.a, it doesn't affect original.a because a is a simple value (not a reference to an object). But when we change copy.b.c, it does affect original.b.c because b is an object, and Object.assign() only copied the reference to the b object, not the actual b object itself.
 
-If you want to make a deep copy (a completely separate copy that doesn't share any references with the original), you would need to use a different method, like JSON serialization (JSON.parse(JSON.stringify(original))), or a library function designed for deep cloning, like lodash's _.cloneDeep(). But be aware that these methods have their own limitations and may not work correctly with certain types of objects
-
+If you want to make a deep copy (a completely separate copy that doesn't share any references with the original), you would need to use a different method, like JSON serialization (JSON.parse(JSON.stringify(original))).
 
 
 
@@ -36,7 +34,7 @@ If you want to make a deep copy (a completely separate copy that doesn't share a
 
 In JavaScript, you can use the Object.freeze() function to make an object immutable, which means that its properties can't be changed, new properties can't be added, and existing properties can't be removed.
 
-```
+```javascript
 let obj = { name: "John", age: 30 };
 
 Object.freeze(obj);
@@ -54,7 +52,7 @@ However, **Object.freeze() only works on the top level of the object**. If the o
 
 For deep freezing, you might have to write a function that recursively freezes every object:
 
-```
+```javascript
 function deepFreeze(obj) {
   let propNames = Object.getOwnPropertyNames(obj);
   for (let name of propNames) {
@@ -67,11 +65,8 @@ function deepFreeze(obj) {
 }
 
 let obj2 = { innerObj: { name: "John" } };
-
 deepFreeze(obj2);
-
 obj2.innerObj.name = "Jane"; // This won't have any effect
-
 console.log(obj2.innerObj.name); // Outputs: "John"
 
 ```
@@ -79,12 +74,11 @@ console.log(obj2.innerObj.name); // Outputs: "John"
 **Remember that freezing an object is not always necessary and it can have performance implications. You should only freeze objects when you need to ensure they do not get changed.**
 
 
-
 **Q: Primitive and Reference types in js with example.**
 
 Primitive types in JavaScript are like simple, standalone toys. You've got balls (numbers), blocks with letters on them (strings), two-sided coins with "true" on one side and "false" on the other (booleans), plus a few special toys: an empty box (null), and a toy still wrapped up because we don't know what it is yet (undefined).
 
-```
+```javascript
 let myBall = 5;  // Number
 let myBlock = "a";  // String
 let myCoin = true;  // Boolean
@@ -95,7 +89,7 @@ let myMysteryToy = undefined;  // Undefined
 
 Each of these toys is its own thing. If you get another ball and paint it a different color, it doesn't change the first ball. This is like how primitive types in JavaScript are immutable, which means they can't be changed. If you want to change a primitive value, you actually create a new value.
 
-```
+```javascript
 let ball1 = 5;  
 let ball2 = ball1;  // Now you have two balls, each with the value 5.
 ball2 = 10;  // You paint one of the balls a different color. 
@@ -105,7 +99,7 @@ console.log(ball1);  // But the first ball is still the same: it outputs 5.
 
 Now, reference types are like toy boxes or toy sets. These are objects, arrays, and functions. An object could be a box of different toys (properties), an array is like a tray that holds multiple toys in order (elements), and a function is like a toy machine that does something with your toys (performs actions).
 
-```
+```javascript
 let myBoxOfToys = { ball: "red", block: "a" };  // Object
 let myTray = ["red ball", "a block", "true coin"];  // Array
 let myToyMachine = function(toy) {  // Function
@@ -114,7 +108,7 @@ let myToyMachine = function(toy) {  // Function
 ```
 With these toy boxes and toy sets, if you let a friend play with one and they change something, it changes your box or set too, because they're actually playing with the same one, not a copy. This is like how reference types in JavaScript point to the same object in memory.
 
-```
+```javascript
 let box1 = { ball: "red" };
 let box2 = box1;  // Now both box1 and box2 are pointing to the same box.
 box2.ball = "blue";  // Your friend paints the ball in the box blue.
