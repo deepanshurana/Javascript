@@ -92,4 +92,3 @@ The `entries()` method returns a new Array Iterator object that contains the key
     ```
 
 Note that using `entries()` with `for...of` is useful when you need to access both the index and the value in the loop. Also,**keys in arrays are the indices**, **keys in maps can be any data type**, and **sets do not have keys (so entries() returns pairs of the same value).**
-
