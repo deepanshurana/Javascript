@@ -351,3 +351,4 @@ watchMagicTrick();
 In this code, `async` is like saying "I'm going to watch a magic trick, but I know it might take some time." And `await` is like saying "I'll come back when the magic trick is done."
 
 So that's how Promises, async, and await work in JavaScript. They're all about dealing with things that take some time, like waiting for a magic trick to be completed!
+
