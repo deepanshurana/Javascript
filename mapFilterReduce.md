@@ -32,7 +32,7 @@ let appleJuice = apples.reduce((juice, apple) => juice + apple, 0); // Put all a
 And that's it! With `map`, `filter`, and `reduce`, you have a lot of magic at your disposal for dealing with arrays in JavaScript.
 
 
-**Q: Exploring `reduce` **
+**Exploring reduce()**
 The `0` at the end of the `reduce()` function is called the initial value.
 
 Let's break it down:
